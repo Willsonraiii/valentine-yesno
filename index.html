@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will you be my Valentine? ❤️</title>
-<meta property="og:title" content="Will you be my Valentine? ❤️">
-<meta property="og:description" content="I have some very important questions for you...">
+<title>Bubu Raani, will you be my Valentine? 🧸🐻💕</title>
+<meta property="og:title" content="Bubu Raani, will you be my Valentine? 🧸🐻💕">
+<meta property="og:description" content="Dudu has some very important Bubu Dudu questions for his Bubu Raani... 🐻💖🐨">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -153,12 +153,12 @@
 <div class="card" id="card">
   <!-- QUIZ SCREEN -->
   <div id="quizScreen">
-    <div class="pill" id="pill">💌 A little quiz for you</div>
+    <div class="pill" id="pill">🧸🐻 For my Bubu Raani 💖</div>
     <div class="progress" id="progress"></div>
     <div class="progress-text" id="progressText">1 / 6</div>
 
     <div class="sticker-wrap" id="stickerWrap">
-      <div id="fallbackEmoji" class="fallback">🥺</div>
+      <div id="fallbackEmoji" class="fallback">🧸🐻</div>
       <img id="sticker" alt="cute" loading="eager" onerror="this.style.display='none'">
     </div>
 
@@ -175,13 +175,13 @@
 
   <!-- SUCCESS SCREEN -->
   <div id="successScreen">
-    <div class="pill">💖 You just made my whole year!</div>
+    <div class="pill">🧸 Dudu is sooo happy! 🐻💕</div>
     <div class="success-gif">
-      <div class="fallback">🥰</div>
-      <img id="successImg" alt="happy" src="assets/success.gif" onerror="this.style.display='none'">
+      <div class="fallback">🧸💖🐻</div>
+      <img id="successImg" alt="happy bubu dudu" src="assets/success.gif" onerror="this.style.display='none'">
     </div>
-    <div class="success-title">YAYYY! I knew you'd say YES! 🥰</div>
-    <p class="success-sub" id="successSub">You’re officially my Valentine now.<br>No refunds, no exchanges — you’re stuck with me! 😘</p>
+    <div class="success-title">YAYYY Bubu Raani said YES! 🧸💕🐻</div>
+    <p class="success-sub" id="successSub">Dudu's Bubu Raani is officially his Valentine now 🐻💖🐨<br>No refunds, no exchanges — Bubu is stuck with Dudu forever! 🧸💍</p>
     <div class="share-row">
       <a id="waBtn" class="btn-wa" target="_blank" rel="noopener" href="#">Share on WhatsApp 💚</a>
       <button id="copyBtn" class="btn-copy">Copy Link 🔗</button>
@@ -190,72 +190,72 @@
   </div>
 </div>
 
-<p class="footer">Made with ❤️ — share this link with your Valentine</p>
+<p class="footer">Made with 🧸💕 — Dudu loves his Bubu Raani 🐻🐨</p>
 
 <script>
 (() => {
   const params = new URLSearchParams(location.search);
-  const toNameRaw = params.get('to') || params.get('name') || '';
-  const fromNameRaw = params.get('from') || '';
+  const toNameRaw = params.get('to') || params.get('name') || 'Bubu Raani';
+  const fromNameRaw = params.get('from') || 'Dudu';
   const toName = toNameRaw.slice(0,22);
   const fromName = fromNameRaw.slice(0,22);
 
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
 
-  // 6 questions - local assets (no more external errors)
+  // 6 bubu dudu questions - local assets
   const questions = [
     {
-      q: toName ? `Hey ${toName}, do you like me? 🥺` : `Do you like me? 🥺`,
-      sub: "Be honest... I can handle it 😊",
-      emoji: "🥺👉👈",
+      q: `Hey ${toName}, do you like your Dudu? 🧸💕`,
+      sub: "Be honest Bubu... Dudu is waiting 🥺🐻",
+      emoji: "🧸👉👈🐻",
       img: "assets/q1.gif",
-      yes: "Yes! 😍",
+      yes: "Love you Dudu! 🐻💖",
       no: "No 😿"
     },
     {
-      q: "Do you think I’m cute? 🙈",
-      sub: "This is very important for my ego hehe",
-      emoji: "😳💘",
+      q: `Do you think your Dudu is cute? 🧸🐻`,
+      sub: "This is very important for Dudu's ego hehe 🙈",
+      emoji: "🐻😳💘",
       img: "assets/q2.gif",
-      yes: "So cute! 🥰",
+      yes: "Cutest Dudu! 🥰🐾",
       no: "Nope 😅"
     },
     {
-      q: "Will you go on a date with me? 🍦💕",
-      sub: "I promise it’ll be fun, I have snacks!",
-      emoji: "🍓✨",
+      q: "Will you go on a Bubu Dudu date with me? 🍦🧸💕",
+      sub: "Bubu + Dudu = perfect date, I bring snacks! 🐨🍓",
+      emoji: "🐻🍓🐨",
       img: "assets/q3.gif",
-      yes: "Of course! 😘",
+      yes: "Yes Dudu! 😘🧸",
       no: "Hmm no 😬"
     },
     {
-      q: "Will you hold my hand forever? 🤝❤️",
-      sub: "Even when we’re old and wrinkly?",
-      emoji: "🤞💞",
+      q: "Will you hold Dudu's hand forever? 🧸🤝🐻",
+      sub: "Even when Bubu Dudu are old & wrinkly? 🐾",
+      emoji: "🧸🤞🐻",
       img: "assets/q4.gif",
-      yes: "Forever! 💍",
+      yes: "Forever! 🐻💍🐨",
       no: "Maybe... 🤔"
     },
     {
-      q: "Do you promise to be mine? 🫣💓",
-      sub: "Only mine? Pretty please?",
-      emoji: "🫶💖",
+      q: "Do you promise to be Dudu's Bubu forever? 🫣🧸💓",
+      sub: "Only Dudu's Bubu Raani? Pretty please? 🥺🐻",
+      emoji: "🫶🧸💖",
       img: "assets/q5.gif",
-      yes: "I promise! ❤️",
+      yes: "Promise, Dudu! ❤️🐾",
       no: "Let me think 🫣"
     },
     {
-      q: toName ? `${toName}, will you be my Valentine? 💖` : `Will you be my Valentine? 💖`,
-      sub: "The most important question of all... 🥺👉👈",
-      emoji: "💌🌹",
+      q: `${toName}, will you be Dudu's Valentine? 🧸💖🐻`,
+      sub: "The most important Bubu Dudu question... 🥺👉👈🧸",
+      emoji: "🧸💌🐻",
       img: "assets/q6.gif",
-      yes: "YES! ❤️",
+      yes: "YES Dudu! 🧸❤️🐻",
       no: "No 😿",
       isFinal: true
     }
   ];
 
-  const successEmojis = ["💖","❤️","💗","💘","💞"];
+  const successEmojis = ["🧸","🐻","🐨","💖","💕","💗"];
 
   // bg hearts
   const bg = document.getElementById('bgHearts');
@@ -295,16 +295,16 @@
       d.className='progress-dot' + (i===current ? ' active' : i<current ? ' done' : '');
       progressEl.appendChild(d);
     });
-    progressText.textContent = `${current+1} / ${questions.length}`;
-    pill.textContent = current === questions.length-1 ? "💘 Final question..." : `💌 Question ${current+1} of ${questions.length}`;
+    progressText.textContent = `${current+1} / ${questions.length} 🧸`;
+    pill.textContent = current === questions.length-1 ? "🧸🐻 Final Bubu Dudu question... 💘" : `🧸 Question ${current+1} of ${questions.length} 🐻`;
   }
 
   function renderStep(){
     const q = questions[current];
     heading.innerHTML = q.q.replace(/</g,'&lt;');
     // For first question, if toName, we already set
-    if(toName && current===0) document.title = `${toName}, I have questions for you ❤️`;
-    if(current=== questions.length-1 && toName) document.title = `${toName}, will you be my Valentine? ❤️`;
+    if(toName && current===0) document.title = `${toName}, Dudu has questions for you 🧸🐻`;
+    if(current=== questions.length-1 && toName) document.title = `${toName}, will you be Dudu's Valentine? 🧸💕`;
     questionText.textContent = q.sub ? "" : "";
     subtitle.textContent = q.sub;
     yesBtn.textContent = q.yes;
@@ -326,11 +326,11 @@
     // Preload next image
     if(questions[current+1]){ const im=new Image(); im.src=questions[current+1].img; }
     buildProgress();
-    hint.textContent = q.isFinal ? "Psst... the No is super shy 🙈" : "Choose wisely 😏";
+    hint.textContent = q.isFinal ? "Psst... Bubu's No is super shy 🙈🧸" : "Bubu, choose wisely 😏🐻";
   }
 
-  const noTexts = ["No 😿","Are you sure? 🥺","Really?? 🥺","Please? 🙏","Don't do this 😭","Think again! 💔","You mean No? 🫣","I'll be sad... 😢","Last chance! 🥺","Just say YES ❤️"];
-  const teaseHints = ["Hehe, try to catch the No 😆","The YES is getting bigger! ❤️","You know you want to click YES 😏","Almost there, just say YES! 🥰"];
+  const noTexts = ["No 😿🧸","Are you sure? 🥺🐻","Really Bubu?? 🥺","Please Bubu? 🙏🧸","Dudu will be sad 😭🐻","Think again Bubu! 💔","You mean No? 🫣🧸","Dudu sad... 😢🐨","Last chance Bubu! 🥺","Just say YES Bubu! 🧸💕"];
+  const teaseHints = ["Hehe, Bubu try to catch the No 😆🐻","Dudu's YES is getting bigger! 🧸❤️","Bubu you know you love Dudu 😏🐨","Almost there Bubu, say YES! 🥰🧸"];
 
   function moveNoBtn(){
     attempts++;
@@ -366,17 +366,17 @@
     const scaleNo = Math.max(0.62, 1 - attempts * 0.06);
     noBtn.style.transform = `scale(${scaleNo})`;
     noBtn.textContent = noTexts[Math.min(attempts, noTexts.length-1)];
-    hint.textContent = teaseHints[Math.min(attempts-1, teaseHints.length-1)] || "Just click YES! ❤️";
-    // change emoji a bit on dodge
-    if(attempts %2===1) fallbackEmoji.textContent = "🥺";
-    else fallbackEmoji.textContent = "😭";
+    hint.textContent = teaseHints[Math.min(attempts-1, teaseHints.length-1)] || "Just click YES Bubu! 🧸💕";
+    // change emoji a bit on dodge - bubu dudu sad
+    if(attempts %2===1) fallbackEmoji.textContent = "🧸🥺";
+    else fallbackEmoji.textContent = "🐻😭";
     if(questions[current].isFinal && attempts >= 6){
-      noBtn.textContent = "YES ❤️";
+      noBtn.textContent = "YES Dudu! 🧸💕";
       noBtn.style.background = "linear-gradient(135deg,#ff2e63,#ff758c)";
       noBtn.style.color = "#fff";
       noBtn.style.borderColor = "transparent";
       noBtn.onclick = () => goNext(true);
-      hint.textContent = "Haha got you! Now click YES 😘";
+      hint.textContent = "Haha got you Bubu! Now click YES 🧸😘";
     }
   }
 
@@ -392,12 +392,12 @@
       quizScreen.style.display='none';
       successScreen.classList.add('show');
       successScreen.style.display='block';
-      if(toName) document.getElementById('successSub').innerHTML = `Yayy ${esc(toName)}! You’re officially my Valentine now.<br>No refunds, no exchanges — you’re stuck with me! 😘` + (fromName? `<br><span style="font-size:12px;color:#b07a89">— with love from ${esc(fromName)} 💌</span>`:'');
-      else if(fromName) document.getElementById('successSub').innerHTML += `<br><span style="font-size:12px;color:#b07a89">— with love from ${esc(fromName)} 💌</span>`;
+      if(toName) document.getElementById('successSub').innerHTML = `Yayy ${esc(toName)}! 🧸💕 Dudu's Bubu Raani is officially his Valentine now 🐻💖🐨<br>No refunds Bubu — you're stuck with Dudu forever! 🧸💍` + (fromName? `<br><span style="font-size:12px;color:#b07a89">— with lots of Bubu Dudu love from ${esc(fromName)} 🧸💕🐻</span>`:'');
+      else if(fromName) document.getElementById('successSub').innerHTML += `<br><span style="font-size:12px;color:#b07a89">— with lots of Bubu Dudu love from ${esc(fromName)} 🧸💕🐻</span>`;
       launchConfetti();
       heartExplosion();
       const shareUrl = location.href;
-      const text = toName ? `${toName} just said YES! ❤️ Will you be my Valentine? Try this: ${shareUrl}` : `I said YES! ❤️ Will you be my Valentine? ${shareUrl}`;
+      const text = toName ? `${toName} just said YES to Dudu! 🧸💕🐻 Will you be my Bubu Valentine? Try this: ${shareUrl}` : `Bubu said YES to Dudu! 🧸💕🐻 Will you be my Bubu Valentine? ${shareUrl}`;
       document.getElementById('waBtn').href = `https://wa.me/?text=${encodeURIComponent(text)}`;
     }
   }
