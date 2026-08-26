@@ -44,12 +44,12 @@
     border:1px solid #ffd0da;
   }
   .progress{
-    display:flex;justify-content:center;gap:7px;margin-bottom:12px;
+    display:flex;justify-content:center;gap:5px;margin-bottom:12px;flex-wrap:wrap;
   }
   .progress-dot{
-    width:26px;height:8px;border-radius:999px;background:#ffe0e6;transition:all .3s;
+    width:20px;height:8px;border-radius:999px;background:#ffe0e6;transition:all .3s;
   }
-  .progress-dot.active{background:linear-gradient(135deg,#ff2e63,#ff758c);width:32px;box-shadow:0 2px 8px rgba(255,46,99,.3)}
+  .progress-dot.active{background:linear-gradient(135deg,#ff2e63,#ff758c);width:26px;box-shadow:0 2px 8px rgba(255,46,99,.3)}
   .progress-dot.done{background:#ffb3c1}
   .progress-text{font-size:11px;color:#b07a89;margin-bottom:10px;font-weight:700;letter-spacing:.3px}
   .sticker-wrap{
@@ -178,7 +178,7 @@
     <div class="pill">🧸 Dudu is sooo happy! 🐻💕</div>
     <div class="success-gif">
       <div class="fallback">🧸💖🐻</div>
-      <img id="successImg" alt="happy bubu dudu" src="assets/success.gif" onerror="this.style.display='none'">
+      <img id="successImg" alt="happy bubu dudu" src="assets/bubu5.gif" onerror="this.style.display='none'">
     </div>
     <div class="success-title">YAYYY Bubu Raani said YES! 🧸💕🐻</div>
     <p class="success-sub" id="successSub">Dudu's Bubu Raani is officially his Valentine now 🐻💖🐨<br>No refunds, no exchanges — Bubu is stuck with Dudu forever! 🧸💍</p>
@@ -202,7 +202,7 @@
 
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
 
-  // 6 bubu dudu questions - local assets
+  // 10 bubu dudu questions - mix cats + real bubu dudu, lots of enjoyments
   const questions = [
     {
       q: `Hey ${toName}, do you like your Dudu? 🧸💕`,
@@ -221,32 +221,64 @@
       no: "Nope 😅"
     },
     {
-      q: "Will you go on a Bubu Dudu date with me? 🍦🧸💕",
-      sub: "Bubu + Dudu = perfect date, I bring snacks! 🐨🍓",
-      emoji: "🐻🍓🐨",
+      q: "Will you eat ice cream with Dudu? 🍦🧸",
+      sub: "Bubu + Dudu + ice cream = happiness! 🐻🍓",
+      emoji: "🍦🐻🐨",
       img: "assets/q3.gif",
-      yes: "Yes Dudu! 😘🧸",
-      no: "Hmm no 😬"
+      yes: "Yummy! 😋🧸",
+      no: "No ice cream? 😢"
+    },
+    {
+      q: "Will you watch movies cuddled with Dudu? 🎬🍿🧸",
+      sub: "Blanket, popcorn and Bubu Dudu cuddles! 🐻💕",
+      emoji: "🎬🧸💕",
+      img: "assets/bubu3.gif",
+      yes: "Cozy! 🥰🎬",
+      no: "No movie? 🥺"
+    },
+    {
+      q: "Will you give Dudu the biggest Bubu hug? 🫂🧸💖",
+      sub: "Dudu needsBubu hugs everyday! 🤗🐻",
+      emoji: "🫂🧸💗",
+      img: "assets/bubu1.gif",
+      yes: "Biggest hug! 🤗💕",
+      no: "No hug? 😭"
+    },
+    {
+      q: "Will you go on a long drive with Dudu? 🚗🧸💨",
+      sub: "Just Bubu Dudu, music and window vibes! 🐻🎶",
+      emoji: "🚗🧸💨",
+      img: "assets/bubu4.gif",
+      yes: "Let's go! 🚗💕",
+      no: "No drive? 🫣"
+    },
+    {
+      q: "Will you dance with Dudu like crazy? 💃🕺🐻",
+      sub: "Bubu Dudu dance party - just us! 🧸🎶",
+      emoji: "💃🧸🕺",
+      img: "assets/bubu6.gif",
+      yes: "Dance! 💃🧸",
+      no: "No dance? 😅"
     },
     {
       q: "Will you hold Dudu's hand forever? 🧸🤝🐻",
-      sub: "Even when Bubu Dudu are old & wrinkly? 🐾",
+      sub: "Even when Bubu Dudu are old & wrinkly? 🐾💍",
       emoji: "🧸🤞🐻",
       img: "assets/q4.gif",
       yes: "Forever! 🐻💍🐨",
       no: "Maybe... 🤔"
     },
     {
-      q: "Do you promise to be Dudu's Bubu forever? 🫣🧸💓",
-      sub: "Only Dudu's Bubu Raani? Pretty please? 🥺🐻",
-      emoji: "🫶🧸💖",
-      img: "assets/q5.gif",
-      yes: "Promise, Dudu! ❤️🐾",
-      no: "Let me think 🫣"
+      q: "Will you give Dudu lots of kisses? 😘🧸💋",
+      sub: "Bubu Dudu kisses are the cutest! 🐻💋🐨",
+      emoji: "😘🧸💋",
+      img: "assets/bubu2.gif",
+      yes: "Muaah! 😘💕",
+      no: "No kisses? 🥺"
     },
     {
       q: `${toName}, will you be Dudu's Valentine? 🧸💖🐻`,
-      sub: "The most important Bubu Dudu question... 🥺👉👈🧸",
+      sub: "The most important Bubu Dudu question... 🥺👉👈🧸💘",
       emoji: "🧸💌🐻",
       img: "assets/q6.gif",
       yes: "YES Dudu! 🧸❤️🐻",
