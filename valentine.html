@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will you be my Valentine? ❤️</title>
+<meta property="og:title" content="Will you be my Valentine? ❤️">
+<meta property="og:description" content="I have some very important questions for you...">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    min-height:100vh;
+    min-height:100dvh;
+    display:grid;
+    place-items:center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ff6b8a 100%);
+    font-family:'Nunito',system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+    padding:18px;
+  }
+  .bg-hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+  .bg-hearts span{position:absolute;bottom:-40px;font-size:22px;animation:floatUp linear infinite;opacity:.55}
+  @keyframes floatUp{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+    10%{opacity:.55}
+    100%{transform:translateY(-110vh) translateX(30px) rotate(20deg);opacity:0}
+  }
+  .card{
+    width:min(430px,100%);
+    background:#fff;
+    border-radius:28px;
+    padding:22px 20px 18px;
+    box-shadow:0 20px 60px rgba(255,75,110,.28), 0 8px 24px rgba(0,0,0,.08);
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,240,243,1);color:#d81b42;
+    padding:6px 12px;border-radius:999px;font-size:11px;font-weight:700;
+    margin-bottom:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);
+    border:1px solid #ffd0da;
+  }
+  .progress{
+    display:flex;justify-content:center;gap:7px;margin-bottom:12px;
+  }
+  .progress-dot{
+    width:26px;height:8px;border-radius:999px;background:#ffe0e6;transition:all .3s;
+  }
+  .progress-dot.active{background:linear-gradient(135deg,#ff2e63,#ff758c);width:32px;box-shadow:0 2px 8px rgba(255,46,99,.3)}
+  .progress-dot.done{background:#ffb3c1}
+  .progress-text{font-size:11px;color:#b07a89;margin-bottom:10px;font-weight:700;letter-spacing:.3px}
+  .sticker-wrap{
+    width:180px;height:180px;margin:0 auto 10px;
+    background:#fff0f3;border-radius:24px;
+    display:grid;place-items:center;
+    overflow:hidden;
+    border:2px dashed #ffb3c1;
+    position:relative;
+  }
+  .sticker-wrap img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .sticker-wrap .fallback{font-size:84px;line-height:1;display:grid;place-items:center;width:100%;height:100%;animation:wiggle 1.2s ease-in-out infinite}
+  @keyframes wiggle{0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.06)}}
+  h1{
+    font-family:'Outfit', sans-serif;
+    font-weight:800;
+    font-size:26px;
+    line-height:1.2;
+    color:#d81b42;
+    margin:8px 0 6px;
+    min-height:62px;
+    display:grid;place-items:center;
+    letter-spacing:-.4px;
+  }
+  h1 span#nameHighlight{color:#ff2e63}
+  .subtitle{color:#7a5a64;font-size:13px;margin-bottom:10px;line-height:1.5;min-height:20px}
+  .question{font-weight:800;font-size:19px;color:#2b2b2b;margin-bottom:4px;letter-spacing:-.2px;min-height:28px}
+  .btn-area{
+    position:relative;
+    width:100%;
+    height:168px;
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:14px;
+    padding-top:10px;
+    overflow:hidden;
+  }
+  button{
+    border:none;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
+    font-family:'Nunito',sans-serif;font-weight:900;
+    border-radius:999px;transition:transform .18s ease, box-shadow .18s ease, background .18s, left .22s cubic-bezier(.34,1.56,.64,1), top .22s cubic-bezier(.34,1.56,.64,1);
+    touch-action:manipulation;
+  }
+  #yesBtn{
+    background:linear-gradient(135deg,#ff2e63,#ff758c);
+    color:#fff;
+    font-size:17px;
+    padding:14px 34px;
+    box-shadow:0 8px 20px rgba(255,46,99,.35);
+    transform-origin:center;
+    z-index:2;
+    min-width:116px;
+  }
+  #yesBtn:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(255,46,99,.45)}
+  #yesBtn:active{transform:scale(.98)}
+  #noBtn{
+    background:#fff;
+    color:#ff2e63;
+    border:2.5px solid #ff2e63;
+    font-size:15px;
+    padding:11px 24px;
+    position:relative;
+    white-space:nowrap;
+    min-width:94px;
+  }
+  #noBtn.absolute{position:absolute}
+  .hint{margin-top:6px;font-size:11.5px;color:#b07a89;min-height:16px}
+  /* success */
+  #successScreen{display:none}
+  #successScreen.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes popIn{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
+  .success-title{
+    font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:#d81b42;line-height:1.15;margin:6px 0 8px;letter-spacing:-.4px
+  }
+  .success-sub{color:#6d4a55;font-size:14px;line-height:1.5;margin-bottom:14px}
+  .success-gif{width:180px;height:180px;margin:0 auto 14px;border-radius:24px;overflow:hidden;background:#fff0f3;border:2px dashed #ffb3c1;position:relative;display:grid;place-items:center}
+  .success-gif img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .success-gif .fallback{font-size:78px;animation:wiggle 1s infinite}
+  .share-row{display:flex;gap:10px;margin-top:14px}
+  .share-row a, .share-row button{flex:1;padding:12px 10px;border-radius:14px;font-size:13px;font-weight:700;text-decoration:none;display:grid;place-items:center}
+  .btn-wa{background:#25D366;color:#fff;box-shadow:0 6px 14px rgba(37,211,102,.3)}
+  .btn-copy{background:#fff;color:#d81b42;border:2px solid #ffd0da}
+  .small-note{margin-top:12px;font-size:11px;color:#b07a89}
+  .small-note a{color:#ff2e63;text-decoration:none}
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:10}
+  .heart-burst{position:fixed;pointer-events:none;z-index:11;font-size:24px;animation:heartPop 900ms ease-out forwards}
+  @keyframes heartPop{
+    0%{transform:translate(-50%,-50%) scale(.5);opacity:1}
+    100%{transform:translate(var(--tx), var(--ty)) scale(1.2);opacity:0}
+  }
+  .footer{margin-top:14px;font-size:10.5px;color:rgba(255,255,255,.9);text-align:center;z-index:1;position:relative;text-shadow:0 1px 6px rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+
+<div class="bg-hearts" id="bgHearts" aria-hidden="true"></div>
+<canvas id="confetti"></canvas>
+
+<div class="card" id="card">
+  <!-- QUIZ SCREEN -->
+  <div id="quizScreen">
+    <div class="pill" id="pill">💌 A little quiz for you</div>
+    <div class="progress" id="progress"></div>
+    <div class="progress-text" id="progressText">1 / 6</div>
+
+    <div class="sticker-wrap" id="stickerWrap">
+      <div id="fallbackEmoji" class="fallback">🥺</div>
+      <img id="sticker" alt="cute" loading="eager" onerror="this.style.display='none'">
+    </div>
+
+    <h1 id="heading">Loading...</h1>
+    <p class="question" id="questionText"></p>
+    <p class="subtitle" id="subtitle"></p>
+
+    <div class="btn-area" id="btnArea">
+      <button id="yesBtn">YES ❤️</button>
+      <button id="noBtn">No 😿</button>
+    </div>
+    <p class="hint" id="hint">Psst... the “No” is shy 🙈 Try to catch it!</p>
+  </div>
+
+  <!-- SUCCESS SCREEN -->
+  <div id="successScreen">
+    <div class="pill">💖 You just made my whole year!</div>
+    <div class="success-gif">
+      <div class="fallback">🥰</div>
+      <img id="successImg" alt="happy" src="assets/success.gif" onerror="this.style.display='none'">
+    </div>
+    <div class="success-title">YAYYY! I knew you'd say YES! 🥰</div>
+    <p class="success-sub" id="successSub">You’re officially my Valentine now.<br>No refunds, no exchanges — you’re stuck with me! 😘</p>
+    <div class="share-row">
+      <a id="waBtn" class="btn-wa" target="_blank" rel="noopener" href="#">Share on WhatsApp 💚</a>
+      <button id="copyBtn" class="btn-copy">Copy Link 🔗</button>
+    </div>
+    <p class="small-note"><a href="#" id="replayLink">Play again ↺</a> · <a href="#" id="editLink">Edit name ✏️</a></p>
+  </div>
+</div>
+
+<p class="footer">Made with ❤️ — share this link with your Valentine</p>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const toNameRaw = params.get('to') || params.get('name') || '';
+  const fromNameRaw = params.get('from') || '';
+  const toName = toNameRaw.slice(0,22);
+  const fromName = fromNameRaw.slice(0,22);
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+  // 6 questions - local assets (no more external errors)
+  const questions = [
+    {
+      q: toName ? `Hey ${toName}, do you like me? 🥺` : `Do you like me? 🥺`,
+      sub: "Be honest... I can handle it 😊",
+      emoji: "🥺👉👈",
+      img: "assets/q1.gif",
+      yes: "Yes! 😍",
+      no: "No 😿"
+    },
+    {
+      q: "Do you think I’m cute? 🙈",
+      sub: "This is very important for my ego hehe",
+      emoji: "😳💘",
+      img: "assets/q2.gif",
+      yes: "So cute! 🥰",
+      no: "Nope 😅"
+    },
+    {
+      q: "Will you go on a date with me? 🍦💕",
+      sub: "I promise it’ll be fun, I have snacks!",
+      emoji: "🍓✨",
+      img: "assets/q3.gif",
+      yes: "Of course! 😘",
+      no: "Hmm no 😬"
+    },
+    {
+      q: "Will you hold my hand forever? 🤝❤️",
+      sub: "Even when we’re old and wrinkly?",
+      emoji: "🤞💞",
+      img: "assets/q4.gif",
+      yes: "Forever! 💍",
+      no: "Maybe... 🤔"
+    },
+    {
+      q: "Do you promise to be mine? 🫣💓",
+      sub: "Only mine? Pretty please?",
+      emoji: "🫶💖",
+      img: "assets/q5.gif",
+      yes: "I promise! ❤️",
+      no: "Let me think 🫣"
+    },
+    {
+      q: toName ? `${toName}, will you be my Valentine? 💖` : `Will you be my Valentine? 💖`,
+      sub: "The most important question of all... 🥺👉👈",
+      emoji: "💌🌹",
+      img: "assets/q6.gif",
+      yes: "YES! ❤️",
+      no: "No 😿",
+      isFinal: true
+    }
+  ];
+
+  const successEmojis = ["💖","❤️","💗","💘","💞"];
+
+  // bg hearts
+  const bg = document.getElementById('bgHearts');
+  for(let i=0;i<14;i++){
+    const s=document.createElement('span');
+    s.textContent=successEmojis[Math.floor(Math.random()*successEmojis.length)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(7+Math.random()*8)+'s';
+    s.style.animationDelay=(Math.random()*7)+'s';
+    s.style.fontSize=(14+Math.random()*18)+'px';
+    bg.appendChild(s);
+  }
+
+  const progressEl = document.getElementById('progress');
+  const progressText = document.getElementById('progressText');
+  const pill = document.getElementById('pill');
+  const heading = document.getElementById('heading');
+  const questionText = document.getElementById('questionText');
+  const subtitle = document.getElementById('subtitle');
+  const sticker = document.getElementById('sticker');
+  const fallbackEmoji = document.getElementById('fallbackEmoji');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const btnArea = document.getElementById('btnArea');
+  const hint = document.getElementById('hint');
+  const quizScreen = document.getElementById('quizScreen');
+  const successScreen = document.getElementById('successScreen');
+
+  let current = 0;
+  let attempts = 0;
+  let noIsAbsolute = false;
+
+  function buildProgress(){
+    progressEl.innerHTML='';
+    questions.forEach((_,i)=>{
+      const d=document.createElement('div');
+      d.className='progress-dot' + (i===current ? ' active' : i<current ? ' done' : '');
+      progressEl.appendChild(d);
+    });
+    progressText.textContent = `${current+1} / ${questions.length}`;
+    pill.textContent = current === questions.length-1 ? "💘 Final question..." : `💌 Question ${current+1} of ${questions.length}`;
+  }
+
+  function renderStep(){
+    const q = questions[current];
+    heading.innerHTML = q.q.replace(/</g,'&lt;');
+    // For first question, if toName, we already set
+    if(toName && current===0) document.title = `${toName}, I have questions for you ❤️`;
+    if(current=== questions.length-1 && toName) document.title = `${toName}, will you be my Valentine? ❤️`;
+    questionText.textContent = q.sub ? "" : "";
+    subtitle.textContent = q.sub;
+    yesBtn.textContent = q.yes;
+    noBtn.textContent = q.no;
+    yesBtn.style.transform='scale(1)';
+    noBtn.style.transform='scale(1)';
+    noBtn.style.left=''; noBtn.style.top=''; noBtn.style.background=''; noBtn.style.color=''; noBtn.style.borderColor='';
+    noBtn.className='';
+    noBtn.onclick=null;
+    // reset dodge state
+    attempts=0; noIsAbsolute=false; btnArea.classList.remove('dodging');
+    // image
+    fallbackEmoji.textContent = q.emoji;
+    fallbackEmoji.style.display='grid';
+    sticker.style.display='block';
+    sticker.src = q.img;
+    sticker.onload = ()=>{ fallbackEmoji.style.display='none'; };
+    sticker.onerror = ()=>{ sticker.style.display='none'; fallbackEmoji.style.display='grid'; };
+    // Preload next image
+    if(questions[current+1]){ const im=new Image(); im.src=questions[current+1].img; }
+    buildProgress();
+    hint.textContent = q.isFinal ? "Psst... the No is super shy 🙈" : "Choose wisely 😏";
+  }
+
+  const noTexts = ["No 😿","Are you sure? 🥺","Really?? 🥺","Please? 🙏","Don't do this 😭","Think again! 💔","You mean No? 🫣","I'll be sad... 😢","Last chance! 🥺","Just say YES ❤️"];
+  const teaseHints = ["Hehe, try to catch the No 😆","The YES is getting bigger! ❤️","You know you want to click YES 😏","Almost there, just say YES! 🥰"];
+
+  function moveNoBtn(){
+    attempts++;
+    if(!noIsAbsolute){
+      const rectBtn = noBtn.getBoundingClientRect();
+      const rectArea = btnArea.getBoundingClientRect();
+      const offsetLeft = rectBtn.left - rectArea.left;
+      const offsetTop = rectBtn.top - rectArea.top;
+      noBtn.classList.add('absolute');
+      noBtn.style.left = offsetLeft + 'px';
+      noBtn.style.top = offsetTop + 'px';
+      noIsAbsolute = true;
+      void noBtn.offsetWidth;
+      btnArea.classList.add('dodging');
+    }
+    const areaW = btnArea.clientWidth;
+    const areaH = btnArea.clientHeight;
+    const btnW = noBtn.offsetWidth;
+    const btnH = noBtn.offsetHeight;
+    const pad = 6;
+    const maxX = Math.max(0, areaW - btnW - pad);
+    const maxY = Math.max(0, areaH - btnH - pad);
+    let x, y, tries=0;
+    do{
+      x = pad + Math.random() * maxX;
+      y = pad + Math.random() * maxY;
+      tries++;
+    } while(tries < 8 && Math.abs(x - areaW/2) < 70 && y < 70);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+    const scaleYes = Math.min(1 + attempts * 0.12, 1.75);
+    yesBtn.style.transform = `scale(${scaleYes})`;
+    const scaleNo = Math.max(0.62, 1 - attempts * 0.06);
+    noBtn.style.transform = `scale(${scaleNo})`;
+    noBtn.textContent = noTexts[Math.min(attempts, noTexts.length-1)];
+    hint.textContent = teaseHints[Math.min(attempts-1, teaseHints.length-1)] || "Just click YES! ❤️";
+    // change emoji a bit on dodge
+    if(attempts %2===1) fallbackEmoji.textContent = "🥺";
+    else fallbackEmoji.textContent = "😭";
+    if(questions[current].isFinal && attempts >= 6){
+      noBtn.textContent = "YES ❤️";
+      noBtn.style.background = "linear-gradient(135deg,#ff2e63,#ff758c)";
+      noBtn.style.color = "#fff";
+      noBtn.style.borderColor = "transparent";
+      noBtn.onclick = () => goNext(true);
+      hint.textContent = "Haha got you! Now click YES 😘";
+    }
+  }
+
+  function goNext(fromNoConversion=false){
+    if(current < questions.length-1){
+      // little pop
+      yesBtn.animate([{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:180});
+      setTimeout(()=>{ current++; renderStep(); }, 160);
+      // little heart burst per step
+      miniHearts();
+    } else {
+      // final yes
+      quizScreen.style.display='none';
+      successScreen.classList.add('show');
+      successScreen.style.display='block';
+      if(toName) document.getElementById('successSub').innerHTML = `Yayy ${esc(toName)}! You’re officially my Valentine now.<br>No refunds, no exchanges — you’re stuck with me! 😘` + (fromName? `<br><span style="font-size:12px;color:#b07a89">— with love from ${esc(fromName)} 💌</span>`:'');
+      else if(fromName) document.getElementById('successSub').innerHTML += `<br><span style="font-size:12px;color:#b07a89">— with love from ${esc(fromName)} 💌</span>`;
+      launchConfetti();
+      heartExplosion();
+      const shareUrl = location.href;
+      const text = toName ? `${toName} just said YES! ❤️ Will you be my Valentine? Try this: ${shareUrl}` : `I said YES! ❤️ Will you be my Valentine? ${shareUrl}`;
+      document.getElementById('waBtn').href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    }
+  }
+
+  function miniHearts(){
+    for(let i=0;i<6;i++){
+      setTimeout(()=>{
+        const h=document.createElement('div');
+        h.className='heart-burst';
+        h.textContent=successEmojis[Math.floor(Math.random()*successEmojis.length)];
+        h.style.left='50%'; h.style.top='42%';
+        const ang=Math.random()*Math.PI*2; const dist=40+Math.random()*80;
+        h.style.setProperty('--tx', Math.cos(ang)*dist+'px');
+        h.style.setProperty('--ty', Math.sin(ang)*dist-30+'px');
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),950);
+      }, i*45);
+    }
+  }
+
+  yesBtn.addEventListener('click', ()=> goNext(false));
+
+  noBtn.addEventListener('mouseenter', ()=>{ if(innerWidth>600) moveNoBtn(); });
+  noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); moveNoBtn(); }, {passive:false});
+  noBtn.addEventListener('click', (e)=>{
+    const q=questions[current];
+    if(q.isFinal && attempts>=6) return; // let onclick handle
+    e.preventDefault();
+    moveNoBtn();
+  });
+
+  // Copy & etc
+  document.getElementById('copyBtn').addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(location.href);
+      const b=document.getElementById('copyBtn');
+      b.textContent="Copied! ✅";
+      setTimeout(()=>b.textContent="Copy Link 🔗",1500);
+    }catch{ prompt("Copy this link:", location.href); }
+  });
+  document.getElementById('replayLink').addEventListener('click',(e)=>{
+    e.preventDefault();
+    successScreen.classList.remove('show'); successScreen.style.display='none';
+    quizScreen.style.display='block';
+    current=0; renderStep();
+  });
+  document.getElementById('editLink').addEventListener('click',(e)=>{
+    e.preventDefault();
+    const n=prompt("Your Valentine's name:", toName||"");
+    if(n!==null){
+      const u=new URL(location.href);
+      if(n.trim()) u.searchParams.set('to', n.trim()); else u.searchParams.delete('to');
+      location.href=u.toString();
+    }
+  });
+
+  function launchConfetti(){
+    const canvas=document.getElementById('confetti');
+    const ctx=canvas.getContext('2d');
+    let W,H, particles=[];
+    function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
+    resize(); addEventListener('resize',resize);
+    const colors=['#ff2e63','#ff8fab','#ffc2d1','#ffd166','#06d6a0','#118ab2'];
+    for(let i=0;i<150;i++) particles.push({x:W/2+(Math.random()-0.5)*200,y:H/2+(Math.random()-0.5)*120,r:5+Math.random()*7,c:colors[Math.floor(Math.random()*colors.length)],vx:(Math.random()-0.5)*14,vy:-Math.random()*12-4,rot:Math.random()*360,vr:(Math.random()-0.5)*12,shape:Math.random()>.5?'rect':'circle'});
+    let frame=0;
+    (function anim(){
+      ctx.clearRect(0,0,W,H);
+      let alive=false;
+      particles.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy; p.vy+=0.36; p.vx*=0.99; p.rot+=p.vr;
+        if(p.y<H+20) alive=true;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180); ctx.fillStyle=p.c;
+        if(p.shape==='rect') ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.62); else {ctx.beginPath(); ctx.arc(0,0,p.r/2,0,Math.PI*2); ctx.fill();}
+        ctx.restore();
+      });
+      frame++;
+      if(alive && frame<280) requestAnimationFrame(anim); else ctx.clearRect(0,0,W,H);
+    })();
+  }
+  function heartExplosion(){
+    for(let i=0;i<20;i++) setTimeout(()=>{
+      const h=document.createElement('div'); h.className='heart-burst';
+      h.textContent=successEmojis[Math.floor(Math.random()*successEmojis.length)];
+      h.style.left='50%'; h.style.top='58%';
+      const ang=Math.random()*Math.PI*2; const dist=90+Math.random()*180;
+      h.style.setProperty('--tx', Math.cos(ang)*dist+'px');
+      h.style.setProperty('--ty', Math.sin(ang)*dist-80+'px');
+      document.body.appendChild(h); setTimeout(()=>h.remove(),950);
+    }, i*55);
+  }
+  addEventListener('keydown', e=>{
+    if(e.key.toLowerCase()==='n') moveNoBtn();
+    if(e.key.toLowerCase()==='y' || e.key==='Enter') yesBtn.click();
+  });
+
+  // init
+  renderStep();
+})();
+</script>
+</body>
+</html>
